@@ -20,6 +20,8 @@ class ProductResource extends Resource
     protected static ?string $model = Product::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-bolt';
+    protected static ?int $navigationSort = 0;
+
     protected static ?string $navigationLabel = 'Products';
     protected static ?string $navigationGroup = 'Shop';
 
@@ -159,7 +161,11 @@ class ProductResource extends Resource
 
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
