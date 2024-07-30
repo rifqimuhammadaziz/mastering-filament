@@ -27,6 +27,12 @@ class ProductResource extends Resource
     protected static ?string $navigationGroup = 'Shop';
     protected static ?string $recordTitleAttribute = 'name';
     protected static int $globalSearchResultsLimit = 20;
+    // protected static ?string $activeNavigationIcon = 'heroicon-o-check-badge';
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 
     public static function getGloballySearchableAttributes(): array
     {
