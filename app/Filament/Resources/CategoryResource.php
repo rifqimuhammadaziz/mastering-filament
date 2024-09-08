@@ -36,7 +36,7 @@ class CategoryResource extends Resource
                                 Forms\Components\TextInput::make('name')
                                     ->required()
                                     ->live(onBlur: true)
-                                    ->unique()
+                                    ->unique('categories', 'name', ignoreRecord: true)
                                     ->afterStateUpdated(function (string $operation, $state, Forms\Set $set) {
                                         if ($operation !== 'create') {
                                             return;
