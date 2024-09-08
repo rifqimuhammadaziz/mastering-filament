@@ -19,6 +19,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use pxlrbt\FilamentSpotlight\SpotlightPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -50,6 +51,9 @@ class AdminPanelProvider extends PanelProvider
                 'logout' => MenuItem::make()->label('Log Out')
             ])
             // ->breadcrumbs(false)
+            ->plugins([
+                SpotlightPlugin::make(),
+            ])
             ->font('Poppins')
             ->favicon('images/favicon.png') // for icon tab
             ->darkMode(false)
